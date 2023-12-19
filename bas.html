@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasan</title>
+    <link rel="shortcut icon" href="image/ico.ico"/>
+    <style>
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: orange;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    margin-left: -80px;
+}
+
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: orange transparent transparent transparent;
+}
+
+.popup:hover .popuptext {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+.dark-mode {
+    background-color: #1E1E1E;
+    color: white;
+}
+
+.light-mode {
+    background-color: #fff;
+    color: black;
+}
+
+button {
+    background-color: #2e2d2d; 
+    border: none;
+    color: white;
+    padding: 15px 5px;
+    text-align: center;
+    text-decoration:underline;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0% 0%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #454545; /* İmleç üzerindeyken daha açık bir renk */
+}
+
+button:active {
+    background-color: #757575; /* Basıldığında daha da açık bir renk */
+}
+
+#all {
+    position: fixed;
+    top:  0%;
+    left: 0%;
+    width:  100%;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.5s ease;
+}
+
+#ust {
+    position: fixed;
+    width:  100%;
+    height: 50px;
+    background: #20202033;
+    color: white;
+}
+
+#menu {
+    position: fixed;
+    left: -100%;  /* Başlangıçta menüyü ekranın dışında tut */
+    top: 0;
+    width: 15%;
+    height: 100%;
+    background-color: #0f0f0f;
+    transition: left 0.5s ease;
+}
+.menu-acik {
+    display: flex;
+    flex-direction:column;
+    left:0%;
+    top:0%;
+    width:15%;
+    height:100%;
+    color:white;
+    background-color:#333232;
+}
+
+.menu-kapali {
+    display:none;
+}
+
+#alt {
+    position: fixed;
+    width: auto;
+    height: 200px;
+    background-color: #3333;
+    color: white;
+}
+</style>
+</head>
+<body id= "all" class="dark-mode" style="position: fixed;top: 11%;left:16% ;">
+    <div id="bant" style="position: fixed;top: 11%;left:16%;right:16%;">
+        <p>Hello, im graphic designer<br> all the information about yourself is in the personal resume<br>Work Experience: 2 Years<br> Adobe Illustrator | Advanced Adobe Indesign | Advanced Adobe Photoshop |<br> Advanced Adobe Premiere | Advanced After Effects | Advanced Blender | Intermediate ZBrush | Intermediate</p>
+    </div>
+
+    <div id= "menu" class="menu-kapali"> 
+        <div style="position: fixed; flex-direction:column;left:0%;top:0%;width:15%;height:100%;color:white;background-color:#333232;">
+            
+            <button style="position: fixed; left: 0; top:10%; width: 15%;height:10%;text-align: center;"class="button" onclick="toggleVD()">
+                <img src="image/vd.png"  style="width: 50px;height: 50px;top:50%;left:50%;position: center;image-orientation: center;" alt="">
+                <p style="position:static;left: 0;"></p>
+            </button> 
+            <button style="position: fixed; left: 0; top:20%; width: 15%;height:10%;text-align: center;"class="button" onclick="toggle2D()">
+                <img src="image/2d.png"  style="width: 50px;height: 50px;">
+                <p style="position:static;left: 0;text-align: center;"></p>
+            </button>
+            <button style="position: fixed; left: 0; top:30%; width: 15%;height:10%;text-align: center;"class="button" onclick="toggle3D()">
+                <img src="image/3d.png"  style="width: 50px;height: 50px;text-align:margine;">
+                <p style="position:static;left: 0;text-align: center;"></p>
+            </button>
+        </div>
+    </div>
+    <div id= "alt" style="position: fixed;flex-direction:column;left:0%;top:80%;width:100%;height:30%;color:white;background-color:#2e2c2c;">
+        <button id="button" style="position:fixed;left:  20%; top:85%;width:10%;height:10%;padding: 1%;";  onclick="toggleHakkinda()">
+            <img src= "image/hk.png" style="width: 30px;height: 30px;" alt="hakkinda">
+        </button> 
+        <form   id="emailForm" style="position:fixed;left: 40%; top:85%;width:30%;height:10%;padding: 1%;" action="..." method="post">
+            <input type="email" id="email" name="email" placeholder="E-posta adresinizi girin"style="position: fixed;width:15%;" required>
+            <textarea id="message" name="message" placeholder="..." style="position: fixed;top:90%;left: 41%;width: 16%;" required></textarea>
+            <button type="submit" id="button" style="position:fixed;right: 20%; top:85%;width:10%;height:10%;padding: 1%;">
+                <img src= "image/snd.png" style="width: 30px;height: 30px;" alt="send">
+            </button>   
+        </form>
+    </div> 
+    <div id= "ust"style="position:fixed;flex;flex-direction:column;left:0;top:0;width:100%;height:10%;color:white;background-color:#2e2c2c;">
+        <div style="position:fixed;text-align: center;right:0%;top:0%;width:10%;height:10%;margin: 0% 0%;">
+            <p style="top: 0;text-align: center;">visitors: <span id="visitorCount">1058</p></span>
+        </div> 
+        <button id="button" style="position:fixed;right:10%;top:0%;width:10%;height:10%;padding: 1%;"; onclick="toggleDarkMode()">
+            <img src= "image/gns.png"  style="width: 30px;height: 30px;"lt="mod" >
+        </button>
+        <button id="button" style="position:fixed;left: 10%;top:0%;width:10%;height:10%;padding: 1%;"; onclick="toggleUser()">
+            <img src= "image/ss.png"   style="width: 60px;height: 30px;" lt="user">
+        </button>                      
+        <button id="button" style="position:fixed;left: 0%;top:0%;width:10%;height:10%;padding: 1%;"; onclick="toggleMenu()">
+            <img src= "image/menu.png" style="width: 50px;height: 30px;"lt="menu">
+        </button>
+    </div>
+</body>
+<script>
+    document.getElementById('visitorCount').innerText = localStorage.getItem('visitorCount') || 10;
+    
+    var visitorCount = localStorage.getItem('visitorCount') || 0;
+    localStorage.setItem('visitorCount', ++visitorCount);
+    
+    document.getElementById('visitorCount').innerText = visitorCount;
+    
+    function toggleMenu() {
+                var menu = document.getElementById("menu");
+                if (menu.className === 'menu-kapali') {
+                    menu.className = 'menu-acik';
+                } else {
+                    menu.className = 'menu-kapali';
+                }
+            }
+    
+    function toggleDarkMode() {
+        var all = document.getElementById('all');
+        if (all.className === 'light-mode') {
+            all.className = 'dark-mode';
+            all.ust.button.img = "ay.png";
+        } else {
+            all.className = 'light-mode';
+        }
+    }
+    
+    function toggleUser() {
+        document.getElementById('bant').innerHTML = '<p>Hello, im graphic designer<br> all the information about yourself is in the personal resume<br>Work Experience: 2 Years<br> Adobe Illustrator | Advanced Adobe Indesign | Advanced Adobe Photoshop |<br> Advanced Adobe Premiere | Advanced After Effects | Advanced Blender | Intermediate ZBrush | Intermediate</p>';
+    }
+    
+    function toggleHakkinda() {
+        document.getElementById('bant').innerHTML = '<p>Hello, im graphic designer<br> all the information about yourself is in the personal resume<br>Work Experience: 2 Years<br> Adobe Illustrator | Advanced Adobe Indesign | Advanced Adobe Photoshop |<br> Advanced Adobe Premiere | Advanced After Effects | Advanced Blender | Intermediate ZBrush | Intermediate</p>';
+    }
+    
+    function toggle2D() {
+        document.getElementById("all").style.display = "block";
+        document.getElementById('bant').innerHTML = `
+                <div style="position;display:block;float:left;justify-content:left;left">
+                <div>
+                    <img src="image/1.png"  alt="2D image" style="width: 30%; height: 30%;">
+                    <img src="image/4.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/6.png"  alt="2D Image" style="width: 30% ;height: 30%;">
+                    <img src="image/3.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/5.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/8.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/10.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/2.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/9.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/13.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/11.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/12.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/7.png"  alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/14.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/15.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/16.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/17.png" alt="2D Image" style="width: 30%; height: 30%;">
+                    <img src="image/18.png" alt="2D Image" style="width: 30%; height: 30%;">
+                </div>
+            </div>
+        `;
+    }
+    function toggle3D() {
+        document.getElementById('bant').innerHTML = `
+            <div style="position; display: block; float:left; justify-content: space-around;left:20%;right:20%;">
+                <div>
+                    <img src="image/26.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/25.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/21.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/22.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/19.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/24.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/20.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/30.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/27.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/28.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/29.png" alt="3D Image" style="width: 30%; height: 30%;">
+                    <img src="image/23.png" alt="3D Image" style="width: 30%; height: 30%;">
+                </div>
+            </div>
+        `;
+    }
+    
+    function toggleVD() {
+        document.getElementById("all").style.display = "block";
+        document.getElementById('bant').innerHTML = `
+
+            <div style="position:fixed  ; display: block float:left; justify-content:on;left:20%;right:20%;padding: 15px 5px;">
+                <div>
+                    <video width="100%" height="100%"  controls>
+                        <source src="image/dnm.mp4" type="video/mp4">
+                        Tarayıcınız video etiketini desteklemiyor.
+                    </video>
+                    <video width="100%" height="100%" controls>
+                        <source src="image/selam.mp4" type="video/mp4">
+                        Tarayıcınız video etiketini desteklemiyor.
+                    </video>
+                    <video width="100%" height="100%" controls>
+                        <source src="image/dn.mp4" type="video/mp4">
+                        Tarayıcınız video etiketini desteklemiyor.
+                    </video>                    
+
+            </div>
+        `;
+    }
+</script>
+</html>
